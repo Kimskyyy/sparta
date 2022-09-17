@@ -5,31 +5,41 @@ name: CI
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
+  # push 또는 pull request 이벤트에 워크플로우를 트리거하지만 오직 main 브랜치에 대해서만
   push:
-    branches: [ "practice" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "practicce" ]
+    branches: [ "main" ]
 
   # Allows you to run this workflow manually from the Actions tab
+  # Actions탭에서 수동으로 실행하는 것을 허용한다
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# 워크폴로우 순차적으로 또는 병렬적으로 실행할 수 있는 하나 또는 더 많은 작업으로 구성된다
 jobs:
   # This workflow contains a single job called "build"
+  # 이 워크플로우는 빌드라고 불리는 단독 작업이 포함되다  
+  
   build:
     # The type of runner that the job will run on
+    # 작업이 실행할 실행자 유형
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
+    # 작업의 부분으로 실행될 작업 순서를 나타내는 단계
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # 작업에 접근할 수 있게 $GITHUB_WORKSPACE에서 레포지토리를 체크아웃
       - uses: actions/checkout@v3
 
       # Runs a single command using the runners shell
+      # 실행자 shell을 사용하여 단일 명령을 실행
       - name: Run a one-line script
         run: echo Hello, world!
 
       # Runs a set of commands using the runners shell
+      # 실행자 shell을 사용하여 명령 집합을 실행
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
